@@ -70,6 +70,9 @@ Game* game_CreateGame(int players)
 		p->data.maxTrails = INITIAL_TRAIL_COUNT;
 		p->data.nTrails = 0;
 	}
+
+    pGame->isValid = 1;
+
 	return pGame;
 }
 
@@ -197,6 +200,8 @@ void resetPlayerData(void) {
 
 	int spawnSet;
 
+    nebu_assert(game->isValid);
+
 	nHumans = game->players - getSettingi("ai_opponents");
 	nAI = game->players - nHumans;
 
@@ -234,6 +239,8 @@ void resetPlayerData(void) {
 			ai->active = AI_COMPUTER;
 		}
 		ai->tdiff = 0;
+        // make sure AI is ready
+        ai->lasttime = 0;
 
 		/* put players on spawn points */
 		
@@ -273,6 +280,7 @@ void resetPlayerData(void) {
 		} else {
 			data->exp_radius = EXP_RADIUS_MAX;
 		}
+        // fprintf(stderr, "[player %d] ai: active=%d\n", i, ai->active);
 	}
 
 	free(pIndicesAI);
@@ -284,6 +292,8 @@ void resetPlayerData(void) {
 }
 
 void game_ResetData(void) {
+    nebu_assert(game->isValid);
+
 	game->pauseflag = PAUSE_GAME_STARTING;
 
 	game2->rules.speed = getSettingf("speed");
