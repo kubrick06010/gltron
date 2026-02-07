@@ -19,7 +19,7 @@ void nebu_assert_config(int flags)
 	iConfig = flags;
 }
 
-void nebu_assert_int(int value)
+void nebu_assert_int(ssize_t value)
 {
 	if(!value)
 	{

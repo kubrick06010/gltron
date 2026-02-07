@@ -1,7 +1,9 @@
 #ifndef _NEBU_ASSERT
 #define _NEBU_ASSERT
 
-#define nebu_assert(x) nebu_assert_int((int)x)
+#include <unistd.h>
+
+#define nebu_assert(x) nebu_assert_int((ssize_t)x)
 
 enum {
 	NEBU_ASSERT_LIBC = 1,
@@ -14,7 +16,7 @@ extern "C" {
 #endif
 
 extern void nebu_assert_config(int flags);
-extern void nebu_assert_int(int value);
+extern void nebu_assert_int(ssize_t value);
 
 #ifdef __cplusplus
 }
