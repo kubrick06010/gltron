@@ -4,6 +4,7 @@
 #include "base/nebu_matrix.h"
 
 #include <stdio.h>
+#include <string.h>
 #include "base/nebu_assert.h"
 
 #include "base/nebu_debug_memory.h"
