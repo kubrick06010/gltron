@@ -72,8 +72,6 @@ void initSubsystems(int argc, const char *argv[]) {
 
 void initFilesystem(int argc, const char *argv[]) {
 	dirSetup(argv[0]);
-	// FIXME: why should argc be 1
-	nebu_assert(argc == 1);
 }
 
 void initScripting(void) {
