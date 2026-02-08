@@ -233,7 +233,8 @@ void playerCamera(PlayerVisual *pV) {
 	data = &pV->pPlayer->data;
 	getPositionFromData(&x, &y, data);
 
-	if(game->pauseflag != PAUSE_GAME_RUNNING || !getSettingi("mouse_lock_ingame"))
+	if( !(game->pauseflag == PAUSE_GAME_RUNNING || game->pauseflag == PAUSE_GAME_STARTING)
+        || !getSettingi("mouse_lock_ingame"))
 	{
 		if(cam->type.freedom[CAM_FREE_R]) {
 			// mouse buttons let you zoom in/out
