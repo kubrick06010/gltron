@@ -4,7 +4,7 @@ tmp = {}
 settings = { }
 tracks = { }
 
-app_version = 0.718
+app_version = 0.720
 -- debugginb
 settings.debug_output = 1
 

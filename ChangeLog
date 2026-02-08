@@ -1,3 +1,17 @@
+0.720
+
+- Migrated svn-repo <https://svn.code.sf.net/p/gltron/code>
+  to git with all branches and tags intact.
+- Cherry picked fixes from git repo <https://git.code.sf.net/p/gltron/git> (new code)
+- Fixes
+  - Build for GNU/Linux (Debian 13)
+  - Allow commandline params
+- Changed certain defaults in scripts/config.lua
+
+0.71 to 0.718
+
+- TODO (see commit logs)
+
 0.62 to 0.70
 
 - New AI that actively tries to cut you off

@@ -1,17 +1,31 @@
-gltron, a 3d lightcycle game using OpenGL 
+# gltron, a 3d lightcycle game using OpenGL 
+
 Copyright (C) 1999 Andreas Umbach <marvin@dataway.ch>
 
 Soundtrack:
 gltron.it - 'Revenge of Cats' is copyright by Peter Hajba <skaven@remedy.fi>
 
-The latest manual & information can be found at
-http://www.gltron.org/
+[Latest manual & information location](http://www.gltron.org/)
 
-Installation from source:
+## Installation from source:
 
 see the INSTALL file in this archive
 
-License:
+## Changes
+
+See [ChangeLog](ChangeLog).
+
+### Original Repositories
+
+This is a git migration from the original source-code
+from Andreas Umbach's [svn repository](https://svn.code.sf.net/p/gltron/code)
+as well as some cherry picked fixes of his [git repository](https://git.code.sf.net/p/gltron/git).
+
+Original branches and tags left intact.
+However, emails addresses of the other authors are unknown to me
+and must be eventually fixed with a rewrite.
+
+## License:
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
