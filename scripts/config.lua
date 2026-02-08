@@ -59,29 +59,29 @@ settings.display_type = 3
 
 -- video
 settings.artpacks = { }
-settings.current_artpack = "classic"
+settings.current_artpack = "default"
 -- detail settings
 settings.mipmap_filter = 3
-settings.alpha_trails = 0
+settings.alpha_trails = 1
 settings.show_glow = 1
 settings.reflection = -1
 settings.show_recognizer = 1
 settings.show_impact = 1
-settings.lod = 1
+settings.lod = 0
 settings.cycle_sharp_edges = 0
 -- hud settings
 settings.show_fps = 0
 settings.show_speed = 1
 settings.show_wall_buster = 0
-settings.show_console = 1
-settings.show_ai_status = 1
+settings.show_console = 0
+settings.show_ai_status = 0
 settings.show_scores = 1
 settings.show_2d = 1
 
 -- screen options
-settings.width = 800
-settings.height = 600
-settings.resolution = 5 -- 800x600
+settings.width = 1920
+settings.height = 1200
+settings.resolution = 6 -- 1280x1024
 settings.windowMode = 1
 
 -- other settings (not available via menu)
@@ -116,11 +116,11 @@ settings.current_track = "revenge_of_cats.it"
 -- music & fx settings
 settings.loopMusic = 0
 -- TODO: debug setting 
-settings.playEffects = 0
+settings.playEffects = 1
 settings.playMusic = 0
 -- settings.playEffects = 1
 -- settings.playMusic = 1
-settings.fxVolume = 0.2
+settings.fxVolume = 0.5
 settings.musicVolume = 0.5
 
 -- input
