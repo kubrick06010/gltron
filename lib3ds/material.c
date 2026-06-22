@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include <config.h>
+#include "config.h"
 #ifdef WITH_DMALLOC
 #include <dmalloc.h>
 #endif
@@ -1066,4 +1066,3 @@ lib3ds_material_write(Lib3dsMaterial *material, Lib3dsIo *io)
   \sa _Lib3dsMaterial
 
 */
-

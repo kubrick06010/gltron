@@ -22,6 +22,8 @@ void Audio_PlayMusic(void);
 void Audio_StopMusic(void);
 void Audio_SetMusicVolume(float volume);
 void Audio_SetFxVolume(float volume);
+void Audio_MenuAction(void);
+void Audio_MenuHighlight(void);
 
 void Audio_StartEngine(int player);
 void Audio_StopEngine(int player);

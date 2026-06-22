@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <config.h>
+#include "config.h"
 #ifdef WITH_DMALLOC
 #include <dmalloc.h>
 #endif
@@ -1091,5 +1091,4 @@ lib3ds_node_write(Lib3dsNode *node, Lib3dsFile *file, Lib3dsIo *io)
   \sa _Lib3dsMorphTrack
 
 */
-
 

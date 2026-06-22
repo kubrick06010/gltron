@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10000010AF90AFC006DCD12 /* arcade_spots in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000060AF90AAB006DCD12 /* arcade_spots */; };
+		E10000020AF90AFC006DCD12 /* biohazard in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000070AF90AAB006DCD12 /* biohazard */; };
+		E10000030AF90AFC006DCD12 /* classic in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000080AF90AAB006DCD12 /* classic */; };
+		E10000040AF90AFC006DCD12 /* default in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000090AF90AAB006DCD12 /* default */; };
+		E10000050AF90AFC006DCD12 /* metalTron in CopyFiles */ = {isa = PBXBuildFile; fileRef = E100000A0AF90AAB006DCD12 /* metalTron */; };
+		E100000B0AF90AFC006DCD12 /* data in CopyFiles */ = {isa = PBXBuildFile; fileRef = E100000D0AF90AAB006DCD12 /* data */; };
+		E100000C0AF90AFC006DCD12 /* sounds in CopyFiles */ = {isa = PBXBuildFile; fileRef = E100000E0AF90AAB006DCD12 /* sounds */; };
+		E10000100AF90AFC006DCD12 /* scripts in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000130AF90AAB006DCD12 /* scripts */; };
+		E10000110AF90AFC006DCD12 /* levels in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000140AF90AAB006DCD12 /* levels */; };
+		E10000120AF90AFC006DCD12 /* music in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000150AF90AAB006DCD12 /* music */; };
 		E17D71F00AF9020A006DCD12 /* resource.c in Sources */ = {isa = PBXBuildFile; fileRef = E17D71EF0AF9020A006DCD12 /* resource.c */; };
 		E17D74160AF90AFC006DCD12 /* artpack.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = E17D737F0AF90AAB006DCD12 /* artpack.lua */; };
 		E17D74170AF90AFC006DCD12 /* artpack.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = E17D73560AF90AAB006DCD12 /* artpack.lua */; };
@@ -225,6 +235,8 @@
 		E19A32F4097E80DA00205429 /* skybox.c in Sources */ = {isa = PBXBuildFile; fileRef = E19A32AE097E802700205429 /* skybox.c */; };
 		E19A32F5097E80DA00205429 /* sound.c in Sources */ = {isa = PBXBuildFile; fileRef = E19A3226097E802600205429 /* sound.c */; };
 		E19A32F6097E80DA00205429 /* sound_glue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E19A3227097E802600205429 /* sound_glue.cpp */; };
+		E19A32F7097E80DA00205429 /* sound_stubs.c in Sources */ = {isa = PBXBuildFile; fileRef = E19A3229097E802600205429 /* sound_stubs.c */; };
+		E19A32F8097E80DA00205429 /* sound_glue_stubs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E19A3228097E802600205429 /* sound_glue_stubs.cpp */; };
 		E19A32F9097E80DA00205429 /* switchCallbacks.c in Sources */ = {isa = PBXBuildFile; fileRef = E19A324C097E802600205429 /* switchCallbacks.c */; };
 		E19A32FA097E80DA00205429 /* texture.c in Sources */ = {isa = PBXBuildFile; fileRef = E19A32AF097E802700205429 /* texture.c */; };
 		E19A32FB097E80DA00205429 /* timedemo.c in Sources */ = {isa = PBXBuildFile; fileRef = E19A324D097E802600205429 /* timedemo.c */; };
@@ -286,109 +298,41 @@
 			dstPath = art;
 			dstSubfolderSpec = 7;
 			files = (
-				E17D74160AF90AFC006DCD12 /* artpack.lua in CopyFiles */,
-				E17D74170AF90AFC006DCD12 /* artpack.lua in CopyFiles */,
-				E17D74180AF90AFC006DCD12 /* artpack.lua in CopyFiles */,
-				E17D74190AF90AFC006DCD12 /* artpack.lua in CopyFiles */,
-				E17D741A0AF90AFC006DCD12 /* artpack.lua in CopyFiles */,
-				E17D741B0AF90AFC006DCD12 /* babbage.0.png in CopyFiles */,
-				E17D741C0AF90AFC006DCD12 /* babbage.0.png in CopyFiles */,
-				E17D741D0AF90AFC006DCD12 /* babbage.0.png in CopyFiles */,
-				E17D741E0AF90AFC006DCD12 /* babbage.1.png in CopyFiles */,
-				E17D741F0AF90AFC006DCD12 /* babbage.1.png in CopyFiles */,
-				E17D74200AF90AFC006DCD12 /* babbage.1.png in CopyFiles */,
-				E17D74210AF90AFC006DCD12 /* gltron.png in CopyFiles */,
-				E17D74220AF90AFC006DCD12 /* gltron.png in CopyFiles */,
-				E17D74230AF90AFC006DCD12 /* gltron_bitmap.png in CopyFiles */,
-				E17D74240AF90AFC006DCD12 /* gltron_floor.png in CopyFiles */,
-				E17D74250AF90AFC006DCD12 /* gltron_floor.png in CopyFiles */,
-				E17D74260AF90AFC006DCD12 /* gltron_floor.png in CopyFiles */,
-				E17D74270AF90AFC006DCD12 /* gltron_floor.png in CopyFiles */,
-				E17D74280AF90AFC006DCD12 /* gltron_floor.png in CopyFiles */,
-				E17D74290AF90AFC006DCD12 /* gltron_impact.png in CopyFiles */,
-				E17D742A0AF90AFC006DCD12 /* gltron_logo.png in CopyFiles */,
-				E17D742B0AF90AFC006DCD12 /* gltron_logo.png in CopyFiles */,
-				E17D742C0AF90AFC006DCD12 /* gltron_trail.png in CopyFiles */,
-				E17D742D0AF90AFC006DCD12 /* gltron_trail.png in CopyFiles */,
-				E17D742E0AF90AFC006DCD12 /* gltron_trail.png in CopyFiles */,
-				E17D742F0AF90AFC006DCD12 /* gltron_traildecal.png in CopyFiles */,
-				E17D74300AF90AFC006DCD12 /* gltron_traildecal.png in CopyFiles */,
-				E17D74310AF90AFC006DCD12 /* gltron_traildecal.png in CopyFiles */,
-				E17D74320AF90AFC006DCD12 /* gltron_traildecal.png in CopyFiles */,
-				E17D74330AF90AFC006DCD12 /* gltron_wall_1.png in CopyFiles */,
-				E17D74340AF90AFC006DCD12 /* gltron_wall_1.png in CopyFiles */,
-				E17D74350AF90AFC006DCD12 /* gltron_wall_2.png in CopyFiles */,
-				E17D74360AF90AFC006DCD12 /* gltron_wall_2.png in CopyFiles */,
-				E17D74370AF90AFC006DCD12 /* gltron_wall_3.png in CopyFiles */,
-				E17D74380AF90AFC006DCD12 /* gltron_wall_3.png in CopyFiles */,
-				E17D74390AF90AFC006DCD12 /* gltron_wall_4.png in CopyFiles */,
-				E17D743A0AF90AFC006DCD12 /* gltron_wall_4.png in CopyFiles */,
-				E17D743B0AF90AFC006DCD12 /* grey_floor.png in CopyFiles */,
-				E17D743C0AF90AFC006DCD12 /* gui.png in CopyFiles */,
-				E17D743D0AF90AFC006DCD12 /* gui.png in CopyFiles */,
-				E17D743E0AF90AFC006DCD12 /* hud-ai.png in CopyFiles */,
-				E17D743F0AF90AFC006DCD12 /* hud-buster.png in CopyFiles */,
-				E17D74400AF90AFC006DCD12 /* hud-fps.png in CopyFiles */,
-				E17D74410AF90AFC006DCD12 /* hud-map.png in CopyFiles */,
-				E17D74420AF90AFC006DCD12 /* hud-mask-buster.png in CopyFiles */,
-				E17D74430AF90AFC006DCD12 /* hud-mask-speed.png in CopyFiles */,
-				E17D74440AF90AFC006DCD12 /* hud-mask-turbo.png in CopyFiles */,
-				E17D74450AF90AFC006DCD12 /* hud-scores.png in CopyFiles */,
-				E17D74460AF90AFC006DCD12 /* hud-speed.png in CopyFiles */,
-				E17D74470AF90AFC006DCD12 /* hud-speed.png in CopyFiles */,
-				E17D74480AF90AFC006DCD12 /* Makefile.am in CopyFiles */,
-				E17D74490AF90AFC006DCD12 /* Makefile.am in CopyFiles */,
-				E17D744A0AF90AFC006DCD12 /* Makefile.am in CopyFiles */,
-				E17D744B0AF90AFC006DCD12 /* Makefile.am in CopyFiles */,
-				E17D744C0AF90AFC006DCD12 /* Makefile.am in CopyFiles */,
-				E17D744D0AF90AFC006DCD12 /* Makefile.am in CopyFiles */,
-				E17D74520AF90AFC006DCD12 /* readme.txt in CopyFiles */,
-				E17D74530AF90AFC006DCD12 /* skybox0.png in CopyFiles */,
-				E17D74540AF90AFC006DCD12 /* skybox0.png in CopyFiles */,
-				E17D74550AF90AFC006DCD12 /* skybox0.png in CopyFiles */,
-				E17D74560AF90AFC006DCD12 /* skybox0.png in CopyFiles */,
-				E17D74570AF90AFC006DCD12 /* skybox0.png in CopyFiles */,
-				E17D74580AF90AFC006DCD12 /* skybox1.png in CopyFiles */,
-				E17D74590AF90AFC006DCD12 /* skybox1.png in CopyFiles */,
-				E17D745A0AF90AFC006DCD12 /* skybox1.png in CopyFiles */,
-				E17D745B0AF90AFC006DCD12 /* skybox1.png in CopyFiles */,
-				E17D745C0AF90AFC006DCD12 /* skybox1.png in CopyFiles */,
-				E17D745D0AF90AFC006DCD12 /* skybox2.png in CopyFiles */,
-				E17D745E0AF90AFC006DCD12 /* skybox2.png in CopyFiles */,
-				E17D745F0AF90AFC006DCD12 /* skybox2.png in CopyFiles */,
-				E17D74600AF90AFC006DCD12 /* skybox2.png in CopyFiles */,
-				E17D74610AF90AFC006DCD12 /* skybox2.png in CopyFiles */,
-				E17D74620AF90AFC006DCD12 /* skybox3.png in CopyFiles */,
-				E17D74630AF90AFC006DCD12 /* skybox3.png in CopyFiles */,
-				E17D74640AF90AFC006DCD12 /* skybox3.png in CopyFiles */,
-				E17D74650AF90AFC006DCD12 /* skybox3.png in CopyFiles */,
-				E17D74660AF90AFC006DCD12 /* skybox3.png in CopyFiles */,
-				E17D74670AF90AFC006DCD12 /* skybox4.png in CopyFiles */,
-				E17D74680AF90AFC006DCD12 /* skybox4.png in CopyFiles */,
-				E17D74690AF90AFC006DCD12 /* skybox4.png in CopyFiles */,
-				E17D746A0AF90AFC006DCD12 /* skybox4.png in CopyFiles */,
-				E17D746B0AF90AFC006DCD12 /* skybox4.png in CopyFiles */,
-				E17D746C0AF90AFC006DCD12 /* skybox5.png in CopyFiles */,
-				E17D746D0AF90AFC006DCD12 /* skybox5.png in CopyFiles */,
-				E17D746E0AF90AFC006DCD12 /* skybox5.png in CopyFiles */,
-				E17D746F0AF90AFC006DCD12 /* skybox5.png in CopyFiles */,
-				E17D74700AF90AFC006DCD12 /* skybox5.png in CopyFiles */,
-				E17D74710AF90AFC006DCD12 /* test.bitmap.png in CopyFiles */,
-				E17D74720AF90AFC006DCD12 /* walls.png in CopyFiles */,
-				E17D74730AF90AFC006DCD12 /* walls.png in CopyFiles */,
-				E17D74740AF90AFC006DCD12 /* walls.png in CopyFiles */,
-				E17D74750AF90AFC006DCD12 /* walls.png in CopyFiles */,
-				E17D74760AF90AFC006DCD12 /* walls.png in CopyFiles */,
-				E17D74770AF90AFC006DCD12 /* xenotron.0.png in CopyFiles */,
-				E17D74780AF90AFC006DCD12 /* xenotron.0.png in CopyFiles */,
-				E17D74790AF90AFC006DCD12 /* xenotron.1.png in CopyFiles */,
-				E17D747A0AF90AFC006DCD12 /* xenotron.1.png in CopyFiles */,
+				E10000010AF90AFC006DCD12 /* arcade_spots in CopyFiles */,
+				E10000020AF90AFC006DCD12 /* biohazard in CopyFiles */,
+				E10000030AF90AFC006DCD12 /* classic in CopyFiles */,
+				E10000040AF90AFC006DCD12 /* default in CopyFiles */,
+				E10000050AF90AFC006DCD12 /* metalTron in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E100000F0AF90A2A006DCD12 /* Copy Support Resources */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				E100000B0AF90AFC006DCD12 /* data in CopyFiles */,
+				E100000C0AF90AFC006DCD12 /* sounds in CopyFiles */,
+				E10000100AF90AFC006DCD12 /* scripts in CopyFiles */,
+				E10000110AF90AFC006DCD12 /* levels in CopyFiles */,
+				E10000120AF90AFC006DCD12 /* music in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E10000060AF90AAB006DCD12 /* arcade_spots */ = {isa = PBXFileReference; lastKnownFileType = folder; name = arcade_spots; path = ../art/arcade_spots; sourceTree = SOURCE_ROOT; };
+		E10000070AF90AAB006DCD12 /* biohazard */ = {isa = PBXFileReference; lastKnownFileType = folder; name = biohazard; path = ../art/biohazard; sourceTree = SOURCE_ROOT; };
+		E10000080AF90AAB006DCD12 /* classic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = classic; path = ../art/classic; sourceTree = SOURCE_ROOT; };
+		E10000090AF90AAB006DCD12 /* default */ = {isa = PBXFileReference; lastKnownFileType = folder; name = default; path = ../art/default; sourceTree = SOURCE_ROOT; };
+		E100000A0AF90AAB006DCD12 /* metalTron */ = {isa = PBXFileReference; lastKnownFileType = folder; name = metalTron; path = ../art/metalTron; sourceTree = SOURCE_ROOT; };
+		E100000D0AF90AAB006DCD12 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../data; sourceTree = SOURCE_ROOT; };
+		E100000E0AF90AAB006DCD12 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = ../sounds; sourceTree = SOURCE_ROOT; };
+		E10000130AF90AAB006DCD12 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = ../scripts; sourceTree = SOURCE_ROOT; };
+		E10000140AF90AAB006DCD12 /* levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = levels; path = ../levels; sourceTree = SOURCE_ROOT; };
+		E10000150AF90AAB006DCD12 /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = music; path = ../music; sourceTree = SOURCE_ROOT; };
 		E17D71EF0AF9020A006DCD12 /* resource.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = resource.c; sourceTree = "<group>"; };
 		E17D72AD0AF907EC006DCD12 /* game_crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game_crash.wav; sourceTree = "<group>"; };
 		E17D72AE0AF907EC006DCD12 /* game_engine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game_engine.wav; sourceTree = "<group>"; };
@@ -845,14 +789,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E19A330B097E814F00205429 /* libpng.framework in Frameworks */,
-				E19A330C097E814F00205429 /* SDL.framework in Frameworks */,
 				E19A3304097E811100205429 /* libglew.a in Frameworks */,
 				E19A3305097E811100205429 /* liblib3ds.a in Frameworks */,
 				E19A3306097E811100205429 /* liblua5.a in Frameworks */,
 				E19A3307097E811100205429 /* libnebu.a in Frameworks */,
 				E19A33C5097E8CF200205429 /* OpenGL.framework in Frameworks */,
-				E19A33C9097E8D4C00205429 /* SDL_sound.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1811,6 +1752,7 @@
 				E19A32C5097E809700205429 /* Sources */,
 				E19A32C6097E809700205429 /* Frameworks */,
 				E17D73420AF90A2A006DCD12 /* CopyFiles */,
+				E100000F0AF90A2A006DCD12 /* Copy Support Resources */,
 			);
 			buildRules = (
 			);
@@ -1901,13 +1843,7 @@
 				E19A306C097E4CA200205429 /* system.c in Sources */,
 				E19A306D097E4CA200205429 /* surface.c in Sources */,
 				E19A306E097E4CA200205429 /* spline.c in Sources */,
-				E19A306F097E4CA200205429 /* SourceSample.cpp in Sources */,
-				E19A3070097E4CA200205429 /* SourceMusic.cpp in Sources */,
-				E19A3071097E4CA200205429 /* SourceEngine.cpp in Sources */,
-				E19A3072097E4CA200205429 /* SourceCopy.cpp in Sources */,
-				E19A3073097E4CA200205429 /* Source3D.cpp in Sources */,
 				E19A3074097E4CA200205429 /* Source.cpp in Sources */,
-				E19A3075097E4CA200205429 /* SoundSystem.cpp in Sources */,
 				E19A3076097E4CA200205429 /* scripting.c in Sources */,
 				E19A3077097E4CA200205429 /* scene.c in Sources */,
 				E19A3079097E4CA200205429 /* random.c in Sources */,
@@ -1999,8 +1935,8 @@
 				E19A32F2097E80DA00205429 /* scripting_interface.c in Sources */,
 				E19A32F3097E80DA00205429 /* settings.c in Sources */,
 				E19A32F4097E80DA00205429 /* skybox.c in Sources */,
-				E19A32F5097E80DA00205429 /* sound.c in Sources */,
-				E19A32F6097E80DA00205429 /* sound_glue.cpp in Sources */,
+				E19A32F7097E80DA00205429 /* sound_stubs.c in Sources */,
+				E19A32F8097E80DA00205429 /* sound_glue_stubs.cpp in Sources */,
 				E19A32F9097E80DA00205429 /* switchCallbacks.c in Sources */,
 				E19A32FA097E80DA00205429 /* texture.c in Sources */,
 				E19A32FB097E80DA00205429 /* timedemo.c in Sources */,
@@ -2048,7 +1984,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "\"PATH_SEPARATOR='/'\"";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
-				USER_HEADER_SEARCH_PATHS = ".. ../lua5/include ../glew/include ../nebu/include /Library/Frameworks/SDL.framework/Headers ~/Library/Frameworks/libpng.framework/Headers ~/Library/Frameworks/SDL_sound.framework/Headers";
+				USER_HEADER_SEARCH_PATHS = ".. ../lua5/include ../glew/include ../nebu/include /opt/homebrew/opt/sdl12-compat/include/SDL /opt/homebrew/opt/libpng/include";
 			};
 			name = Debug;
 		};
@@ -2059,7 +1995,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = "\"PATH_SEPARATOR='/'\"";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
-				USER_HEADER_SEARCH_PATHS = ".. ../lua5/include ../glew/include ../nebu/include /Library/Frameworks/SDL.framework/Headers ~/Library/Frameworks/libpng.framework/Headers ~/Library/Frameworks/SDL_sound.framework/Headers";
+				USER_HEADER_SEARCH_PATHS = ".. ../lua5/include ../glew/include ../nebu/include /opt/homebrew/opt/sdl12-compat/include/SDL /opt/homebrew/opt/libpng/include";
 			};
 			name = Release;
 		};
@@ -2233,11 +2169,17 @@
 					Foundation,
 					"-framework",
 					AppKit,
+					"-L/opt/homebrew/opt/sdl12-compat/lib",
+					"-L/opt/homebrew/opt/libpng/lib",
+					"-L/opt/homebrew/opt/libopenmpt/lib",
+					"-lSDL",
+					"-lpng",
 					"-lz",
+					"-lopenmpt",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = GLtron;
-				USER_HEADER_SEARCH_PATHS = ".. ../src/include ../lua5/include ../glew/include ../nebu/include /Library/Frameworks/SDL.framework/Headers ~/Library/Frameworks/libpng.framework/Headers ~/Library/Frameworks/SDL_sound.framework/Headers";
+				USER_HEADER_SEARCH_PATHS = ".. ../src/include ../lua5/include ../glew/include ../nebu/include /opt/homebrew/opt/sdl12-compat/include/SDL /opt/homebrew/opt/libpng/include /opt/homebrew/opt/libopenmpt/include";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -2277,11 +2219,17 @@
 					Foundation,
 					"-framework",
 					AppKit,
+					"-L/opt/homebrew/opt/sdl12-compat/lib",
+					"-L/opt/homebrew/opt/libpng/lib",
+					"-L/opt/homebrew/opt/libopenmpt/lib",
+					"-lSDL",
+					"-lpng",
 					"-lz",
+					"-lopenmpt",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = GLtron;
-				USER_HEADER_SEARCH_PATHS = ".. ../src/include ../lua5/include ../glew/include ../nebu/include /Library/Frameworks/SDL.framework/Headers ~/Library/Frameworks/libpng.framework/Headers ~/Library/Frameworks/SDL_sound.framework/Headers";
+				USER_HEADER_SEARCH_PATHS = ".. ../src/include ../lua5/include ../glew/include ../nebu/include /opt/homebrew/opt/sdl12-compat/include/SDL /opt/homebrew/opt/libpng/include /opt/homebrew/opt/libopenmpt/include";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};

@@ -11,6 +11,37 @@ gltron.it - 'Revenge of Cats' is copyright by Peter Hajba <skaven@remedy.fi>
 
 see the INSTALL file in this archive
 
+## macOS Xcode build
+
+The maintained macOS build entry point is:
+
+```sh
+./script/build_macos.sh
+```
+
+It builds the `GLtron.app` scheme from `XCode2/GLtron.xcodeproj` with code
+signing disabled and writes DerivedData to `/tmp/gltron-derived` by default.
+Override `CONFIGURATION` or `DERIVED_DATA_PATH` when needed:
+
+```sh
+CONFIGURATION=Release DERIVED_DATA_PATH=/tmp/gltron-release ./script/build_macos.sh
+```
+
+Current macOS builds expect Homebrew `sdl12-compat`, `libpng`, and `libopenmpt` to be
+available under `/opt/homebrew/opt`. The Xcode target builds without
+`SDL_sound`; the macOS audio path uses SDL for mixing and `libopenmpt` for the
+bundled module music.
+
+Run the macOS bundle spec with:
+
+```sh
+./tests/macos_bundle_spec.sh
+```
+
+The spec rebuilds the app and verifies that the generated bundle contains the
+GLtron executable plus the expected `data`, `sounds`, `scripts`, `levels`,
+`music`, and per-art-pack resource directories.
+
 ## Changes
 
 See [ChangeLog](ChangeLog).

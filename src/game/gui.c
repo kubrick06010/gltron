@@ -1,4 +1,5 @@
 #include "audio/audio.h"
+#include "audio/sound_glue.h"
 #include "video/video.h"
 #include "video/graphics_utility.h"
 #include "input/input.h"
@@ -118,6 +119,7 @@ void keyboardGui(int state, int key, int x, int y) {
   switch(key) {
   case 27:
     if(strcmp(pMenuName, "RootMenu")) {
+      Audio_MenuAction();
       scripting_Run("MenuFunctions.GotoParent()");
     } else {
 		nebu_System_ExitLoop(eSRC_GUI_Escape);
@@ -145,26 +147,31 @@ void keyboardGui(int state, int key, int x, int y) {
 	case SYSTEM_JOY_BUTTON_7 + SYSTEM_JOY_OFFSET:
 	case SYSTEM_JOY_BUTTON_8 + SYSTEM_JOY_OFFSET:
 	case SYSTEM_JOY_BUTTON_9 + SYSTEM_JOY_OFFSET:
+    Audio_MenuAction();
     scripting_Run("MenuFunctions.Action()");
     break;
   case SYSTEM_KEY_UP:
 	case SYSTEM_JOY_UP:
 	case SYSTEM_JOY_UP + SYSTEM_JOY_OFFSET:
+    Audio_MenuHighlight();
     scripting_Run("MenuFunctions.Previous()");
     break;
   case SYSTEM_KEY_DOWN:
 	case SYSTEM_JOY_DOWN:
 	case SYSTEM_JOY_DOWN + SYSTEM_JOY_OFFSET:
+    Audio_MenuHighlight();
     scripting_Run("MenuFunctions.Next()");
     break;
   case SYSTEM_KEY_RIGHT:
 	case SYSTEM_JOY_RIGHT:
 		case SYSTEM_JOY_RIGHT + SYSTEM_JOY_OFFSET:
+    Audio_MenuHighlight();
     scripting_Run("MenuFunctions.Right()");
     break;
   case SYSTEM_KEY_LEFT:
 	case SYSTEM_JOY_LEFT:
 		case SYSTEM_JOY_LEFT + SYSTEM_JOY_OFFSET:
+    Audio_MenuHighlight();
     scripting_Run("MenuFunctions.Left()");
     break;
   case SYSTEM_KEY_F11: doBmpScreenShot(gScreen); break;
@@ -381,4 +388,3 @@ Callbacks guiCallbacks = {
   displayGui, idleGui, keyboardGui, initGui, exitGui,
   guiMouse, guiMouseMotion, "gui"
 };
-

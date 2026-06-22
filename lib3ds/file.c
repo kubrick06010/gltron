@@ -32,7 +32,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <config.h>
+#include "config.h"
 #ifdef WITH_DMALLOC
 #include <dmalloc.h>
 #endif

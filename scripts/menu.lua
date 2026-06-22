@@ -547,14 +547,14 @@ MainGameMenu = {
       labels = { "off", "on" },
       read = function() return settings.playMusic; end,
       values = { 0, 1 },
-      store = function(value) settings.playMusic = value; c_update_settings_cache() ; end
+      store = function(value) settings.playMusic = value; c_update_settings_cache(); c_reloadTrack(); end
    },
    FX = {
       type = MenuC.type.list, caption = "Sound FX",
       labels = { "off", "on" },
       values = { 0, 1 },
       read = function() return settings.playEffects; end,
-      store = function(value) settings.playEffects = value; end
+      store = function(value) settings.playEffects = value; c_update_settings_cache(); end
    },
    Music_Volume = {
       type = MenuC.type.slider, caption = "Music Volume",
@@ -690,5 +690,3 @@ MenuFunctions.SetParent( WarningMenu, "RootMenu" )
 
 MenuFunctions.SetNames( MainGameMenu )
 MenuFunctions.SetParent( MainGameMenu, "RootMenu" )
-
-

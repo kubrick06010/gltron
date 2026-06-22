@@ -23,11 +23,6 @@ static BOOL   gFinderLaunch;
 @interface NSString (ReplaceSubString)
 - (NSString *)stringByReplacingRange:(NSRange)aRange with:(NSString *)aString;
 @end
-#else
-/* An internal Apple class used to setup Apple menus */
-@interface NSAppleMenuController:NSObject {}
-- (void)controlMenu:(NSMenu *)aMenu;
-@end
 #endif
 
 @interface SDLApplication : NSApplication
@@ -101,25 +96,14 @@ static BOOL   gFinderLaunch;
 
 void setupAppleMenu(void)
 {
-    /* warning: this code is very odd */
-    NSAppleMenuController *appleMenuController;
     NSMenu *appleMenu;
     NSMenuItem *appleMenuItem;
 
-    appleMenuController = [[NSAppleMenuController alloc] init];
     appleMenu = [[NSMenu alloc] initWithTitle:@""];
     appleMenuItem = [[NSMenuItem alloc] initWithTitle:@"" action:nil keyEquivalent:@""];
     
     [appleMenuItem setSubmenu:appleMenu];
-
-    /* yes, we do need to add it and then remove it --
-       if you don't add it, it doesn't get displayed
-       if you don't remove it, you have an extra, titleless item in the menubar
-       when you remove it, it appears to stick around
-       very, very odd */
     [[NSApp mainMenu] addItem:appleMenuItem];
-    [appleMenuController controlMenu:appleMenu];
-    [[NSApp mainMenu] removeItem:appleMenuItem];
     [appleMenu release];
     [appleMenuItem release];
 }
@@ -153,7 +137,7 @@ void setupWindowMenu(void)
 }
 
 /* Replacement for NSApplicationMain */
-void CustomApplicationMain (argc, argv)
+void CustomApplicationMain (int argc, char *argv[])
 {
     NSAutoreleasePool	*pool = [[NSAutoreleasePool alloc] init];
     SDLMain				*sdlMain;
@@ -185,7 +169,7 @@ void CustomApplicationMain (argc, argv)
     int status;
 
     /* Set the working directory to the .app's parent directory */
-    [self setupWorkingDirectory:gFinderLaunch];
+    [self setupWorkingDirectory:YES];
 
 #if SDL_USE_NIB_FILE
     /* Set the main menu to contain the real app name instead of "SDL App" */
