@@ -376,14 +376,3 @@ to 0.41:
 - fixed Makefile, compiles now with -O2 instead of -g (debug)
   I can't see an obvious speed increase though
 - added this CHANGELOG file
-
-0.72-beta-0001 
-
-Updates and Bugfixes:
-  - Fixed camera movement behavior for the player in-game (commit e87c0c2).
-  - Updated default settings to lock mouse camera movement while playing (commit e87c0c2).
-  - Addressed a fix related to macOS Xcode builds (commit a3b3cf9).
-
-Cleanup:
-  - Updated .gitignore to exclude generated files like clang* and compile_commands.json (commit 2ce803b).
-
