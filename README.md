@@ -27,10 +27,12 @@ Override `CONFIGURATION` or `DERIVED_DATA_PATH` when needed:
 CONFIGURATION=Release DERIVED_DATA_PATH=/tmp/gltron-release ./script/build_macos.sh
 ```
 
-Current macOS builds expect Homebrew `sdl12-compat`, `libpng`, and `libopenmpt` to be
-available under `/opt/homebrew/opt`. The Xcode target builds without
+Current macOS builds use vendored arm64 dependencies from
+`third_party/macos-arm64`: `sdl12-compat`, `libpng`, `libopenmpt`, and
+`libopenmpt`'s runtime dylib dependencies. The Xcode target builds without
 `SDL_sound`; the macOS audio path uses SDL for mixing and `libopenmpt` for the
-bundled module music.
+bundled module music. Runtime dylibs are copied into
+`GLtron.app/Contents/Frameworks` by the build script.
 
 Run the macOS bundle spec with:
 
@@ -39,8 +41,8 @@ Run the macOS bundle spec with:
 ```
 
 The spec rebuilds the app and verifies that the generated bundle contains the
-GLtron executable plus the expected `data`, `sounds`, `scripts`, `levels`,
-`music`, and per-art-pack resource directories.
+GLtron executable, embedded SDL dylib, plus the expected `data`, `sounds`,
+`scripts`, `levels`, `music`, and per-art-pack resource directories.
 
 ## Changes
 
