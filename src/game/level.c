@@ -177,26 +177,49 @@ void game_spawnset_Free(game_spawnset* pSpawnSet)
 	free(pSpawnSet);
 }
 
-game_spawnset* game_spawnset_Create(void)
+game_spawnset* game_spawnset_Create(int defaultType)
 {
 	scripting_StringResult s;
 	int i;
+	int hasSetTable = 0;
 
 	game_spawnset* pSpawnSet = (game_spawnset*) malloc(sizeof(game_spawnset));
 
 	const int iPos = scripting_StackGuardStart();
 
-	// get spawnset type
-	scripting_GetValue("type");
-	nebu_assert(!scripting_IsNil());
-	scripting_GetStringResult(&s);
-	if(strcmp(s, "list") == 0) { pSpawnSet->type = eGameSpawnPoint; }
-	else if(strcmp(s, "lines") == 0) { pSpawnSet->type = eGameSpawnLine; }
-	else { pSpawnSet->type = eGameSpawnUndef; }
-	scripting_StringResult_Free(s);
+	/*
+	 * Level files exist in two spawn formats:
+	 *
+	 * - newer files wrap each spawn collection in a typed table:
+	 *     spawn = { { type = "list", set = { ... } }, ... }
+	 *
+	 * - older bundled files store spawn points directly:
+	 *     spawn = { { x = ..., y = ..., dir = ... }, ... }
+	 *
+	 * When defaultType is supplied, the caller has already detected the
+	 * legacy direct-list form and the current Lua stack value is the spawn
+	 * array itself. Otherwise, the stack value is one typed spawn-set table
+	 * and this function must descend into its "set" member.
+	 */
+	if(defaultType != eGameSpawnUndef)
+	{
+		pSpawnSet->type = defaultType;
+	}
+	else
+	{
+		// get spawnset type
+		scripting_GetValue("type");
+		nebu_assert(!scripting_IsNil());
+		scripting_GetStringResult(&s);
+		if(strcmp(s, "list") == 0) { pSpawnSet->type = eGameSpawnPoint; }
+		else if(strcmp(s, "lines") == 0) { pSpawnSet->type = eGameSpawnLine; }
+		else { pSpawnSet->type = eGameSpawnUndef; }
+		scripting_StringResult_Free(s);
 
-	scripting_GetValue("set");
-	nebu_assert(!scripting_IsNil());
+		scripting_GetValue("set");
+		nebu_assert(!scripting_IsNil());
+		hasSetTable = 1;
+	}
 
 	scripting_GetArraySize(& pSpawnSet->nPoints);
 	nebu_assert(pSpawnSet->nPoints);
@@ -254,7 +277,8 @@ game_spawnset* game_spawnset_Create(void)
 		scripting_Pop(); // index i
 	}
 
-	scripting_Pop(); // set
+	if(hasSetTable)
+		scripting_Pop(); // set
 
 	scripting_StackGuardEnd(iPos);
 
@@ -304,18 +328,38 @@ game_level* game_CreateLevel(void)
 	// are spawn points relative?
 	scripting_GetOptional_Int("spawn_is_relative", &l->spawnIsRelative, 1);
 
-	// get number of spawnpoints
+	/*
+	 * Accept both the typed spawn-set schema used by square.lua and the
+	 * older direct spawn-point schema still used by several bundled levels.
+	 * The first element is enough to disambiguate them: typed spawn sets
+	 * contain a "type" field, while legacy spawn points do not.
+	 */
 	scripting_GetValue("spawn");
 	nebu_assert(!scripting_IsNil());
-	scripting_GetArraySize(& l->nSpawnSets);
-
-	l->ppSpawnSets = malloc(l->nSpawnSets * sizeof(game_spawnset*));
-
-	for(i = 0; i < l->nSpawnSets; i++)
+	scripting_GetArrayIndex(1);
+	scripting_GetValue("type");
+	if(scripting_IsNil())
 	{
-		scripting_GetArrayIndex(i + 1);
-		l->ppSpawnSets[i] = game_spawnset_Create();
-		scripting_Pop(); // index
+		scripting_Pop(); // type
+		scripting_Pop(); // first spawn point
+		l->nSpawnSets = 1;
+		l->ppSpawnSets = malloc(sizeof(game_spawnset*));
+		l->ppSpawnSets[0] = game_spawnset_Create(eGameSpawnPoint);
+	}
+	else
+	{
+		scripting_Pop(); // type
+		scripting_Pop(); // first spawn set
+		scripting_GetArraySize(& l->nSpawnSets);
+
+		l->ppSpawnSets = malloc(l->nSpawnSets * sizeof(game_spawnset*));
+
+		for(i = 0; i < l->nSpawnSets; i++)
+		{
+			scripting_GetArrayIndex(i + 1);
+			l->ppSpawnSets[i] = game_spawnset_Create(eGameSpawnUndef);
+			scripting_Pop(); // index
+		}
 	}
 	scripting_Pop(); // spawn
 	
@@ -378,26 +422,42 @@ game_level* game_CreateLevel(void)
 		computeBoundaries(l);
 	}
 
-	// load movement directions
-	// store boundary from lua
+	/*
+	 * Older levels predate the explicit movement-axis table. Preserve
+	 * compatibility by falling back to the four cardinal axes used by the
+	 * default square level instead of asserting on a missing field.
+	 */
 	scripting_GetValue("axis");
 
-	// get number of movement directions
-	scripting_GetArraySize(& l->nAxis);
-	// copy movement directions
-	l->pAxis = malloc(l->nAxis * sizeof(vec2));
-	for(i = 0; i < l->nAxis; i++)
+	if(scripting_IsNil())
 	{
-		scripting_GetArrayIndex(i + 1);
-		
-		scripting_GetValue("x");
-		scripting_GetFloatResult(& l->pAxis[i].v[0]);
-		scripting_GetValue("y");
-		scripting_GetFloatResult(& l->pAxis[i].v[1]);
-			
-		scripting_Pop(); // index i
+		scripting_Pop(); // axis
+		l->nAxis = 4;
+		l->pAxis = malloc(l->nAxis * sizeof(vec2));
+		l->pAxis[0].v[0] = 0;  l->pAxis[0].v[1] = -1;
+		l->pAxis[1].v[0] = -1; l->pAxis[1].v[1] = 0;
+		l->pAxis[2].v[0] = 0;  l->pAxis[2].v[1] = 1;
+		l->pAxis[3].v[0] = 1;  l->pAxis[3].v[1] = 0;
 	}
-	scripting_Pop(); // axis
+	else
+	{
+		// get number of movement directions
+		scripting_GetArraySize(& l->nAxis);
+		// copy movement directions
+		l->pAxis = malloc(l->nAxis * sizeof(vec2));
+		for(i = 0; i < l->nAxis; i++)
+		{
+			scripting_GetArrayIndex(i + 1);
+			
+			scripting_GetValue("x");
+			scripting_GetFloatResult(& l->pAxis[i].v[0]);
+			scripting_GetValue("y");
+			scripting_GetFloatResult(& l->pAxis[i].v[1]);
+				
+			scripting_Pop(); // index i
+		}
+		scripting_Pop(); // axis
+	}
 
 	scripting_Pop(); // level
 
