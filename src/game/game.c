@@ -19,6 +19,33 @@
 
 #include "base/nebu_assert.h"
 
+#define MAX_PLAYERS 4
+
+/*
+ * Saved preferences are user-editable and older menus allowed impossible
+ * player counts. Clamp them before allocating player state or choosing spawns.
+ */
+static void clampPlayerSettings(void)
+{
+	int humans = getSettingi("players");
+	int ai = getSettingi("ai_opponents");
+
+	if(humans < 0)
+		humans = 0;
+	if(ai < 0)
+		ai = 0;
+
+	if(humans > MAX_PLAYERS)
+		humans = MAX_PLAYERS;
+	if(humans + ai > MAX_PLAYERS)
+		ai = MAX_PLAYERS - humans;
+	if(humans + ai < 1)
+		humans = 1;
+
+	setSettingi("players", humans);
+	setSettingi("ai_opponents", ai);
+}
+
 void GameMode_Idle(void) {
 	Sound_idle();
 	Time_Idle();
@@ -41,6 +68,8 @@ void newGame(void)
 	video_LoadLevel();
 
 	/* initialize the rest of the game's datastructures */
+	/* Keep persisted settings inside the engine's supported player range. */
+	clampPlayerSettings();
 	game_CreatePlayers(getSettingi("players") + getSettingi("ai_opponents"), &game, &game2);
 	changeDisplay(-1);
     

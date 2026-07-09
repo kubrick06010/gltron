@@ -126,14 +126,16 @@ int getSpawnPosition(int iPlayer, int iTeamSize, int iBaseset, float *x, float *
 		if(game2->level->ppSpawnSets[i]->type == eGameSpawnPoint)
 		{
 			iSubPos = iPlayer;
-			if(iTeamSize < game2->level->ppSpawnSets[i]->nPoints)
+			/* A set with exactly one point per team member is valid. */
+			if(iTeamSize <= game2->level->ppSpawnSets[i]->nPoints)
 				goto setIsFound; // break
 		}
 		else if(game2->level->ppSpawnSets[i]->type == eGameSpawnLine)
 		{
 			for(j = 0; j < game2->level->ppSpawnSets[i]->nPoints; j++)
 			{
-				if(iTeamSize < game2->level->ppSpawnSets[i]->pSpawnPoints[j].n)
+				/* Line spawn capacity is inclusive: n players fit on an n-player line. */
+				if(iTeamSize <= game2->level->ppSpawnSets[i]->pSpawnPoints[j].n)
 				{
 					iSubPos = j;
 					goto setIsFound;
@@ -142,6 +144,13 @@ int getSpawnPosition(int iPlayer, int iTeamSize, int iBaseset, float *x, float *
 			}
 		}
 	}
+
+	/*
+	 * Older levels only define a single spawn set. If AI requested a later
+	 * set, reuse the first compatible set instead of aborting on launch.
+	 */
+	if(iBaseset > 0)
+		return getSpawnPosition(iPlayer, iTeamSize, 0, x, y, dir);
 
 setIsFound:
 
@@ -198,7 +207,7 @@ void resetPlayerData(void) {
 	int nAI;
 	int nHumans;
 
-	int spawnSet;
+	int spawnSet = 0;
 
     nebu_assert(game->isValid);
 
@@ -235,7 +244,9 @@ void resetPlayerData(void) {
 		}
 		else
 		{
-			getSpawnPosition(pIndicesAI[i - nHumans], nAI, spawnSet + 1, &x, &y, &data->dir);
+			/* With no human players there is no prior human spawn set to offset from. */
+			int aiSpawnBase = nHumans > 0 ? spawnSet + 1 : 0;
+			getSpawnPosition(pIndicesAI[i - nHumans], nAI, aiSpawnBase, &x, &y, &data->dir);
 			ai->active = AI_COMPUTER;
 		}
 		ai->tdiff = 0;

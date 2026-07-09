@@ -1,3 +1,10 @@
+-- The engine allocates four player slots, shared by humans and AI.
+local max_players = 4
+
+local function playerCount()
+	return settings.players + settings.ai_opponents
+end
+
 MainGameMenu = { 
    -- menu after startup
    current = "RootMenu",
@@ -116,13 +123,13 @@ MainGameMenu = {
    Players = {
 		type = MenuC.type.slider, caption = "Players",
 		right = function()
-			if(settings.players < 4) then
+			if(settings.players < max_players and playerCount() < max_players) then
                 settings.players = settings.players + 1;
                 c_invalidateGame();
 			end
 		end,
 		left = function()
-			if(settings.players ~= 0) then
+			if(settings.players ~= 0 and playerCount() > 1) then
 				settings.players = settings.players - 1;
                 c_invalidateGame();
 			end
@@ -133,11 +140,13 @@ MainGameMenu = {
    AIPlayers = {
 		type = MenuC.type.slider, caption = "AI opponents",
 		right = function()
-            settings.ai_opponents = settings.ai_opponents + 1;
-            c_invalidateGame();
+			if(playerCount() < max_players) then
+                settings.ai_opponents = settings.ai_opponents + 1;
+                c_invalidateGame();
+			end
         end,
 		left = function()
-			if(settings.ai_opponents ~= 0) then
+			if(settings.ai_opponents ~= 0 and playerCount() > 1) then
 				settings.ai_opponents = settings.ai_opponents - 1;
                 c_invalidateGame();
 			end

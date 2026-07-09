@@ -28,4 +28,8 @@ for dylib in $RUNTIME_DYLIBS; do
   cp "$dylib" "$FRAMEWORKS_PATH/"
 done
 
+# Sign after copying runtime dylibs; mutating the bundle after signing can make
+# dyld kill the app with CODESIGNING Invalid Page during startup.
+codesign --force --deep --sign - "$APP_PATH"
+
 echo "$APP_PATH"

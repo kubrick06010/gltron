@@ -34,5 +34,7 @@ for artpack in arcade_spots biohazard classic default metalTron; do
 done
 
 test ! -f "$RESOURCES/art/artpack.lua"
+# Regression check for bundles invalidated by post-build resource/dylib copies.
+codesign --verify --deep --strict --verbose=4 "$APP_PATH"
 
 echo "macOS bundle spec passed: $APP_PATH"

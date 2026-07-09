@@ -14,6 +14,7 @@
 		E10000050AF90AFC006DCD12 /* metalTron in CopyFiles */ = {isa = PBXBuildFile; fileRef = E100000A0AF90AAB006DCD12 /* metalTron */; };
 		E100000B0AF90AFC006DCD12 /* data in CopyFiles */ = {isa = PBXBuildFile; fileRef = E100000D0AF90AAB006DCD12 /* data */; };
 		E100000C0AF90AFC006DCD12 /* sounds in CopyFiles */ = {isa = PBXBuildFile; fileRef = E100000E0AF90AAB006DCD12 /* sounds */; };
+		E10000160AF90AFC006DCD12 /* GLTron.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000170AF90AAB006DCD12 /* GLTron.icns */; };
 		E10000100AF90AFC006DCD12 /* scripts in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000130AF90AAB006DCD12 /* scripts */; };
 		E10000110AF90AFC006DCD12 /* levels in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000140AF90AAB006DCD12 /* levels */; };
 		E10000120AF90AFC006DCD12 /* music in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10000150AF90AAB006DCD12 /* music */; };
@@ -314,6 +315,7 @@
 			files = (
 				E100000B0AF90AFC006DCD12 /* data in CopyFiles */,
 				E100000C0AF90AFC006DCD12 /* sounds in CopyFiles */,
+				E10000160AF90AFC006DCD12 /* GLTron.icns in CopyFiles */,
 				E10000100AF90AFC006DCD12 /* scripts in CopyFiles */,
 				E10000110AF90AFC006DCD12 /* levels in CopyFiles */,
 				E10000120AF90AFC006DCD12 /* music in CopyFiles */,
@@ -330,6 +332,7 @@
 		E100000A0AF90AAB006DCD12 /* metalTron */ = {isa = PBXFileReference; lastKnownFileType = folder; name = metalTron; path = ../art/metalTron; sourceTree = SOURCE_ROOT; };
 		E100000D0AF90AAB006DCD12 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../data; sourceTree = SOURCE_ROOT; };
 		E100000E0AF90AAB006DCD12 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = ../sounds; sourceTree = SOURCE_ROOT; };
+		E10000170AF90AAB006DCD12 /* GLTron.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = GLTron.icns; path = ../PBProject/GLTron.icns; sourceTree = SOURCE_ROOT; };
 		E10000130AF90AAB006DCD12 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = ../scripts; sourceTree = SOURCE_ROOT; };
 		E10000140AF90AAB006DCD12 /* levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = levels; path = ../levels; sourceTree = SOURCE_ROOT; };
 		E10000150AF90AAB006DCD12 /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; name = music; path = ../music; sourceTree = SOURCE_ROOT; };
