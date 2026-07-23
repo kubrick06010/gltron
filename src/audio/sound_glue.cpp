@@ -377,4 +377,12 @@ extern "C" {
       fprintf(stderr, "[error] unkown sample %d: '%s'\n", number, name);
     }
   }
+
+  /* The legacy SDL_sound backend has no dedicated menu voices. Keep the
+     shared UI audio hooks valid on non-macOS builds as silent operations. */
+  void Audio_MenuAction(void) {
+  }
+
+  void Audio_MenuHighlight(void) {
+  }
 }

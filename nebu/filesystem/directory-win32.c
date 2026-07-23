@@ -102,7 +102,13 @@ nebu_List* readDirectoryContents(const char *dirname, const char *prefix) {
 }
 
 void makeDirectory(const char *name) {
-	fprintf(stderr, "failed to create dir %s - feature not supported\n", name);
+	if(name == NULL || name[0] == '\0' || strcmp(name, ".") == 0)
+		return;
+
+	if(CreateDirectoryA(name, NULL) || GetLastError() == ERROR_ALREADY_EXISTS)
+		return;
+
+	fprintf(stderr, "failed to create dir %s (error %lu)\n", name, GetLastError());
 }
 
 #endif

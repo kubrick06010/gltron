@@ -1,3 +1,6 @@
+Historical note: this file describes the original CVS workflow. The maintained
+Git build instructions are in ../BUILDING.md.
+
 After you checked out from CVS (and after every "cvs update -dP"), do
 
 ./autogen.sh

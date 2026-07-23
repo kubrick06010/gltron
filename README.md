@@ -5,44 +5,32 @@ Copyright (C) 1999 Andreas Umbach <marvin@dataway.ch>
 Soundtrack:
 gltron.it - 'Revenge of Cats' is copyright by Peter Hajba <skaven@remedy.fi>
 
-[Latest manual & information location](http://www.gltron.org/)
+The original project website was [gltron.org](http://www.gltron.org/). It is
+kept here as a historical reference; maintained build information lives in
+this repository.
 
-## Installation from source:
+## Building from source
 
-see the INSTALL file in this archive
+See [BUILDING.md](BUILDING.md) for complete requirements, platform limits, and
+troubleshooting notes.
 
-## macOS Xcode build
+Quick entry points:
 
-The maintained macOS build entry point is:
-
-```sh
-./script/build_macos.sh
+```text
+Linux:   ./autogen.sh && ./configure --enable-localdata && make
+Windows: .\script\package_windows.ps1
+macOS:   ./script/build_macos.sh
 ```
 
-It builds the `GLtron.app` scheme from `XCode2/GLtron.xcodeproj` with code
-signing disabled and writes DerivedData to `/tmp/gltron-derived` by default.
-Override `CONFIGURATION` or `DERIVED_DATA_PATH` when needed:
+The maintained configurations are Linux with Autotools, Windows `Win32` with
+Visual Studio 2022, and macOS `arm64` with Xcode.
 
-```sh
-CONFIGURATION=Release DERIVED_DATA_PATH=/tmp/gltron-release ./script/build_macos.sh
-```
+## Project status
 
-Current macOS builds use vendored arm64 dependencies from
-`third_party/macos-arm64`: `sdl12-compat`, `libpng`, `libopenmpt`, and
-`libopenmpt`'s runtime dylib dependencies. The Xcode target builds without
-`SDL_sound`; the macOS audio path uses SDL for mixing and `libopenmpt` for the
-bundled module music. Runtime dylibs are copied into
-`GLtron.app/Contents/Frameworks` by the build script.
-
-Run the macOS bundle spec with:
-
-```sh
-./tests/macos_bundle_spec.sh
-```
-
-The spec rebuilds the app and verifies that the generated bundle contains the
-GLtron executable, embedded SDL dylib, plus the expected `data`, `sounds`,
-`scripts`, `levels`, `music`, and per-art-pack resource directories.
+GLtron is a legacy project. Its original source and resource layout is kept
+intact while build compatibility, packaging, and crash fixes are maintained.
+The active work list is in [TODO](TODO); older design notes under `docs/` are
+retained as historical references.
 
 ## Changes
 
@@ -55,7 +43,7 @@ from Andreas Umbach's [svn repository](https://svn.code.sf.net/p/gltron/code)
 as well as some cherry picked fixes of his [git repository](https://git.code.sf.net/p/gltron/git).
 
 Original branches and tags left intact.
-However, emails addresses of the other authors are unknown to me
+However, email addresses of the other authors are unknown to me
 and must be eventually fixed with a rewrite.
 
 ## License:

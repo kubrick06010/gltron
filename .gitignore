@@ -5,6 +5,16 @@
 *~
 *.log
 
+# Local Docker visual/audio-check harness and captured output
+tools/docker/
+
+# Windows build and packaging outputs
+bin/
+dist/
+win32/deps/
+**/Debug/
+**/Release/
+
 # macOS / Xcode local state
 .DS_Store
 xcuserdata/

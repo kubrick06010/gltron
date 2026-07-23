@@ -10,6 +10,10 @@
 
 #include "base/nebu_assert.h"
 
+#if defined(WIN32) && defined(main)
+#undef main
+#endif
+
 int main(int argc, char *argv[] ) {
 	nebu_debug_memory_CheckLeaksOnExit();
 	// nebu_assert_config(NEBU_ASSERT_PRINT_STDERR);
@@ -18,8 +22,6 @@ int main(int argc, char *argv[] ) {
 	exitSubsystems();
 	return 0;
 }
-
-
 
 
 

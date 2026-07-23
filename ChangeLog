@@ -1,12 +1,45 @@
-0.720
+0.720 (unreleased)
 
-- Migrated svn-repo <https://svn.code.sf.net/p/gltron/code>
-  to git with all branches and tags intact.
-- Cherry picked fixes from git repo <https://git.code.sf.net/p/gltron/git> (new code)
-- Fixes
-  - Build for GNU/Linux (Debian 13)
-  - Allow commandline params
-- Changed certain defaults in scripts/config.lua
+Changes are listed newest first.
+
+2026-07-23
+
+- Restored the Visual Studio 2022 Win32 build and added a PowerShell packaging
+  script that produces a runnable directory and distributable ZIP.
+- Fixed Windows runtime resource paths, directory creation, dependency include
+  paths, and compatibility with the SDL-provided main entry point.
+- Kept the non-macOS menu audio hooks link-safe and verified Linux music
+  playback of the bundled Impulse Tracker module through SDL_sound/libmikmod.
+- Documented reproducible Linux, Windows, and macOS build paths and their
+  currently supported architectures.
+- Ignored generated Autotools files, build outputs, extracted dependencies,
+  local Docker checks, and IDE state.
+
+2026-07-09
+
+- Fixed legacy level parsing and initialization crashes.
+- Hardened startup behavior for incomplete or older level definitions.
+
+2026-07-05
+
+- Vendored the arm64 libraries required by the macOS build.
+- Embedded the SDL and libopenmpt runtime dependencies in the application
+  bundle and applied signing after bundle assembly.
+
+2026-06-22
+
+- Restored the Xcode build for Apple Silicon and added a macOS bundle
+  regression test.
+- Added compatible audio stubs and fixed legacy source issues exposed by the
+  current macOS toolchain.
+
+2026-02-08
+
+- Migrated the original Subversion repository, preserving branches and tags,
+  and cherry-picked fixes from the later SourceForge Git repository.
+- Restored the GNU/Linux build on Debian 13.
+- Allowed command-line parameters again.
+- Updated default graphics and camera settings for current displays.
 
 0.71 to 0.718
 
