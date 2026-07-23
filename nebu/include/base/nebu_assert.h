@@ -1,7 +1,12 @@
 #ifndef _NEBU_ASSERT
 #define _NEBU_ASSERT
 
+#ifdef WIN32
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#else
 #include <unistd.h>
+#endif
 
 #define nebu_assert(x) nebu_assert_int((ssize_t)x)
 
